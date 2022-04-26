@@ -1,11 +1,11 @@
-import './App.css';
+import Recipe from './recipes/Recipe';
+import { AppDiv } from './styles/app.styles';
 
 function App() {
   return (
-    <div className="App">
-
-
-    </div>
+    <AppDiv>
+      <Recipe/>
+    </AppDiv>
   );
 }
 
