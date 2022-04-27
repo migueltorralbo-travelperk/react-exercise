@@ -73,17 +73,16 @@ const Recipe = () => {
             description: recipe.description,
             ingredients: recipe.ingredients.map(i => i.name).join(", ")
         })
-        document.getElementById("name").value =  recipe.name;
-        document.getElementById("description").value =  recipe.description;
-        document.getElementById("ingredients").value =  recipe.ingredients.map(i => i.name).join(", ");
         setEditMode(true);
         setEditId(id);
     }
 
     const cancelEditMode = () => {
-        document.getElementById("name").value =  null;
-        document.getElementById("description").value =  null;
-        document.getElementById("ingredients").value =  null;
+        setFormData({
+            name: '',
+            description: '',
+            ingredients: ''
+        })
         setEditMode(false);
         setEditId(null);
     }
@@ -112,7 +111,7 @@ const Recipe = () => {
                             <label>Name:</label>
                         </FormTd>
                         <FormTd>
-                            <TextField type="text" id='name' placeholder='Name' name='name' onChange={handleChange}/>
+                            <TextField type="text" id='name' value={formData.name} placeholder='Name' name='name' onChange={handleChange}/>
                         </FormTd>
                     </tr>
                     <tr>
@@ -120,7 +119,7 @@ const Recipe = () => {
                             <label>Description:</label>
                         </FormTd>
                         <FormTd>
-                        <TextField type="text" id="description" placeholder='Description' name='description' onChange={handleChange}/>
+                        <TextField type="text" id="description" value={formData.description} placeholder='Description' name='description' onChange={handleChange}/>
                         </FormTd>
                     </tr>
                     <tr>
@@ -128,7 +127,7 @@ const Recipe = () => {
                             <label>Ingredients:</label>
                         </FormTd>
                         <FormTd>
-                        <TextField type="text" id="ingredients" placeholder='Ingredients, separated by comma (,)' name='ingredients' onChange={handleChange}/>
+                        <TextField type="text" id="ingredients" value={formData.ingredients} placeholder='Ingredients, separated by comma (,)' name='ingredients' onChange={handleChange}/>
                         </FormTd>
                     </tr>
                     <tr>
